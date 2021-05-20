@@ -49,6 +49,13 @@
             path: '#',
           }"
         />
+        <sidebar-item
+            :link="{
+            name: 'Payments',
+            icon: 'ni ni-money-coins text-primary',
+            path: '/payments',
+          }"
+        />
       </template>
     </side-bar>
     <div class="main-content" :data="sidebarBackground">
