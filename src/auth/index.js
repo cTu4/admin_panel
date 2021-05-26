@@ -10,7 +10,7 @@
 // let instance;
 //
 // /** Returns the current instance of the SDK */
-// export const getInstance = () => instance;
+// // export const getInstance = () => instance;
 //
 // /** Creates an instance of the Auth0 SDK. If one has already been created, it returns that instance */
 // export const useAuth0 = ({
@@ -19,7 +19,6 @@
 //                              ...options
 //                          }) => {
 //     if (instance) return instance;
-//
 //     // The 'instance' is simply a Vue object
 //     instance = createApp({
 //         data() {
@@ -92,6 +91,7 @@
 //         /** Use this lifecycle method to instantiate the SDK client */
 //         async created() {
 //             // Create a new instance of the SDK client using members of the given options object
+//             console.log(options);
 //             this.auth0Client = await createAuth0Client({
 //                 ...options,
 //                 client_id: options.clientId,
@@ -130,6 +130,6 @@
 // // Create a simple Vue plugin to expose the wrapper object throughout the application
 // export const Auth0Plugin = {
 //     install(Vue, options) {
-//         Vue.prototype.$auth = useAuth0(options);
+//         Vue.config.globalProperties.$auth = useAuth0(options);
 //     }
 // };

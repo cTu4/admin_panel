@@ -13,6 +13,9 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Payments from "../views/payments.vue";
 
+import Auth from "../views/Auth.vue";
+
+
 
 // import Auth from "../views/Auth.vue";
 
@@ -72,6 +75,18 @@ const routes = [
       },
     ],
   },
+  // {
+  //   path: "/",
+  //   redirect: "auth",
+  //   component: Auth,
+  //   children: [
+  //     {
+  //       path: "/auth",
+  //       name: "auth",
+  //       components: { default: Login },
+  //     }
+  //   ]
+  // },
 ];
 
 
