@@ -249,6 +249,11 @@ export default {
       this.bigLineChart.activeIndex = index;
     },
   },
+  created(){
+    if(!this.$store.state.auth){
+      this.$router.push({path: '/login'});
+    }
+  },
   mounted() {
     chart = new Chart(
       document.getElementById(this.salesChartID).getContext("2d"),

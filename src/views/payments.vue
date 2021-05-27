@@ -12,5 +12,10 @@ export default {
   components: {
 
   },
+  created(){
+    if(!this.$store.state.auth){
+      this.$router.push({path: '/login'});
+    }
+  }
 };
 </script>

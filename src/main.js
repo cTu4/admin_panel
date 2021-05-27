@@ -21,37 +21,24 @@ import App from "./App.vue";
 import router from "./router";
 import ArgonDashboard from "./plugins/argon-dashboard";
 import "element-plus/lib/theme-chalk/index.css";
+import { createStore } from 'vuex'
+// import useVuelidate from '@vuelidate/core'
 
-
-// // Import the Auth0 configuration
-// import { domain, clientId } from "../auth_config.json";
-//
-// // Import the plugin here
-// import { Auth0Plugin } from "./auth";
-
-
-
-
-
-
+const store = createStore({
+    state () {
+        return {
+            auth: ''
+        }
+    }
+})
 
 const appInstance = createApp(App);
 
-// appInstance.use(Auth0Plugin, {
-//     domain,
-//     clientId,
-//     onRedirectCallback: appState => {
-//         router.push(
-//             appState && appState.targetUrl
-//                 ? appState.targetUrl
-//                 : window.location.pathname
-//         );
-//     }
-// });
-
-
 appInstance.use(router);
 appInstance.use(ArgonDashboard);
-appInstance.config.globalProperties.auth = "";
+appInstance.use(store);
+// appInstance.use(useVuelidate);
+
+// appInstance.config.globalProperties.auth = "";
 
 appInstance.mount("#app");

@@ -28,10 +28,9 @@
           <form role="form">
             <base-input
               formClasses="input-group-alternative mb-3"
-              placeholder="Email"
+              placeholder="Login"
               addon-left-icon="ni ni-email-83"
-              @input="email"
-
+              @input="login"
             >
             </base-input>
 
@@ -42,10 +41,10 @@
               addon-left-icon="ni ni-lock-circle-open"
               @input="pswd"
 
-
             >
             </base-input>
-
+<!--            <input type="text" class="input" name="login" v-model="model.login">-->
+<!--            <input type="password" class="input" v-model="model.password">-->
             <base-checkbox class="custom-control-alternative">
               <span class="text-muted">Remember me</span>
             </base-checkbox>
@@ -70,43 +69,60 @@
 </template>
 <script>
 import axios from "axios";
+import useVuelidate from '@vuelidate/core'
+import { required, minLength } from '@vuelidate/validators'
 
 export default {
   name: "login",
+  setup () {
+    return { v$: useVuelidate() }
+  },
   data() {
     return {
       model: {
-        email: "",
+        login: "",
         password: "",
       },
     };
+  },
+  validations: {
+    model: {
+      login: { min: minLength(6) },
+      password: { min: minLength(10)}
+    }
   },
   methods:{
     pswd(val){
       this.model.password += val.data;
     },
-    email(val){
-      this.model.email += val.data;
+    login(val){
+      this.model.login += val.data;
     },
     Login(){
-      console.log(this.model.email,this.model.password)
-      if(this.model.email && this.model.password){
-        this.$router.push({path: '/'});
+      if(this.model.login && this.model.password){
+        axios.get('https://api.brest.app/token/',{
+          "login": this.model.login,
+          "password": this.model.password
+        }).then((resp)=>{
+          if(resp.data.STATUS === "SUCCESS"){
+            this.$store.state.auth = resp.data.TOKEN;
+            this.$router.push({path: '/dashboard'});
+          }
 
+        });
       }
+
 
     }
   },
-  mounted(){
-    this.auth = "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzc28uYnJlc3QuYXBwIiwic3ViIjoiYmI3OTYwODYtYmUwMS0xMWViLTgxY2ItNmVmOTFmZTZhODA1IiwiaWF0IjoxNTE2MjM5MDIyLCJleHAiOjk5OTk5OTk5OTl9.86jG45MN1rsqqbysGTaMwrHyhxL4XDzY0_RLpWSLRgI";
+  created(){
 
-    axios.get('https://api.brest.app/payment/',{
-      headers:{
-        Authorization: this.auth
-      }
-    }).then((resp)=>{
-      console.log(resp)
-    });
+
+  },
+  mounted(){
+
+
+
 
 
   //   axios.post("https://equilit.eu.auth0.com/oauth/token",{
@@ -140,4 +156,8 @@ export default {
   }
 };
 </script>
-<style></style>
+<style>
+  .error{
+    border: 1px solid #f53f3f;
+  }
+</style>

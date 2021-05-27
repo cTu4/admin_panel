@@ -13,7 +13,7 @@ import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Payments from "../views/payments.vue";
 
-import Auth from "../views/Auth.vue";
+// import Auth from "../views/Auth.vue";
 
 
 

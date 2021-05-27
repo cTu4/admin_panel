@@ -10,6 +10,8 @@
   },
   "dependencies": {
     "@auth0/auth0-spa-js": "^1.15.0",
+    "@vuelidate/core": "^2.0.0-alpha.18",
+    "@vuelidate/validators": "^2.0.0-alpha.15",
     "axios": "^0.21.1",
     "bootstrap": "4.6.0",
     "bootstrap-vue": "2.15.0",
@@ -20,7 +22,8 @@
     "nouislider": "14.6.0",
     "vue": "^3.0.5",
     "vue-router": "4.0.1",
-    "vue-toastification": "1.7.11"
+    "vue-toastification": "1.7.11",
+    "vuex": "4.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "4.5.10",
