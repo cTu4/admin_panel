@@ -93,21 +93,49 @@ export default {
   },
   methods:{
     pswd(val){
-      this.model.password += val.data;
+      this.model.password = val.target.value;
     },
     login(val){
-      this.model.login += val.data;
+      this.model.login = val.target.value;
     },
     Login(){
-
+      console.log(this.model.login,this.model.password)
       if(this.model.login && this.model.password){
-        axios.get('https://api.brest.app/token/',{
-          "login": this.model.login,
-          "password": this.model.password
-        }).then((resp)=>{
+        // axios({
+        //   method: 'get',
+        //   url: 'https://api.brest.app/token/',
+        //   params:{
+        //     "email": this.model.login,
+        //     "password": this.model.password
+        //   },
+        //   headers:{
+        //     'Content-Type': 'application/json'
+        //   }
+        // }).then((resp)=>{
+        //   console.log(resp);
+        //   if(resp.data.STATUS === "SUCCESS"){
+        //     this.$store.state.auth = "Bearer " + resp.data.TOKEN;
+        //     this.$router.push({path: '/dashboard'});
+        //   }
+        //
+        // });
+
+        axios.post('https://api.brest.app/token/',{
+            "email": this.model.login,
+            "password": this.model.password
+        },
+            {
+              headers:{
+                    'Content-Type': 'application/json'
+                  }
+            }).then((resp)=>{
+          console.log(resp);
           if(resp.data.STATUS === "SUCCESS"){
             this.$store.state.auth = "Bearer " + resp.data.TOKEN;
             this.$router.push({path: '/dashboard'});
+          }
+          else {
+            alert('Wrong auth!')
           }
 
         });

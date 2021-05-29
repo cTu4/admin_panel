@@ -24,13 +24,12 @@ import "element-plus/lib/theme-chalk/index.css";
 import { createStore } from 'vuex'
 
 // import useVuelidate from '@vuelidate/core'
-
 const store = createStore({
     state () {
         return {
             auth: '',
             payments: [
-               
+
             ]
         }
     }
