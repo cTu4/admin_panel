@@ -40,12 +40,20 @@
               >Our Blog</a
             >
           </li>
+<!--          <li class="nav-item">-->
+<!--            <a-->
+<!--              href="https://brest.app/license"-->
+<!--              class="nav-link"-->
+<!--              target="_blank"-->
+<!--              >License</a-->
+<!--            >-->
+<!--          </li>-->
           <li class="nav-item">
             <a
-              href="https://brest.app/license"
-              class="nav-link"
-              target="_blank"
-              >License</a
+                href="https://brest.app/documentation"
+                class="nav-link"
+                target="_blank"
+            >Documentation</a
             >
           </li>
         </ul>

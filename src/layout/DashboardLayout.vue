@@ -38,22 +38,29 @@
         <sidebar-item
           :link="{
             name: 'Users',
-            icon: 'ni ni-single-02 text-primary',
+            icon: 'fas fa-users text-primary',
             path: '#',
           }"
         />
-        <sidebar-item
-          :link="{
-            name: 'Reports',
-            icon: 'ni ni-single-copy-04 text-primary',
-            path: '#',
-          }"
-        />
+<!--        <sidebar-item-->
+<!--          :link="{-->
+<!--            name: 'Reports',-->
+<!--            icon: 'ni ni-single-copy-04 text-primary',-->
+<!--            path: '#',-->
+<!--          }"-->
+<!--        />-->
         <sidebar-item
             :link="{
             name: 'Payments',
             icon: 'ni ni-money-coins text-primary',
             path: '/payments',
+          }"
+        />
+        <sidebar-item
+            :link="{
+            name: 'Orders',
+            icon: 'ni ni-single-copy-04 text-primary',
+            path: '/orders',
           }"
         />
       </template>

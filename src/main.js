@@ -22,21 +22,28 @@ import router from "./router";
 import ArgonDashboard from "./plugins/argon-dashboard";
 import "element-plus/lib/theme-chalk/index.css";
 import { createStore } from 'vuex'
+
 // import useVuelidate from '@vuelidate/core'
 
 const store = createStore({
     state () {
         return {
-            auth: ''
+            auth: '',
+            payments: [
+               
+            ]
         }
     }
-})
+});
 
 const appInstance = createApp(App);
 
 appInstance.use(router);
 appInstance.use(ArgonDashboard);
 appInstance.use(store);
+
+
+
 // appInstance.use(useVuelidate);
 
 // appInstance.config.globalProperties.auth = "";

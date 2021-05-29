@@ -12,6 +12,7 @@ import Profile from "../views/UserProfile.vue";
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
 import Payments from "../views/payments.vue";
+import Orders from "../views/Orders.vue";
 
 // import Auth from "../views/Auth.vue";
 
@@ -55,6 +56,11 @@ const routes = [
         path: "/payments",
         name: "payments",
         components: { default: Payments },
+      },
+      {
+        path: "/orders",
+        name: "orders",
+        components: { default: Orders },
       },
     ],
   },

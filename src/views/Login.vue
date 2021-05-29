@@ -70,7 +70,7 @@
 <script>
 import axios from "axios";
 import useVuelidate from '@vuelidate/core'
-import { required, minLength } from '@vuelidate/validators'
+import {  minLength } from '@vuelidate/validators'
 
 export default {
   name: "login",
@@ -99,13 +99,14 @@ export default {
       this.model.login += val.data;
     },
     Login(){
+
       if(this.model.login && this.model.password){
         axios.get('https://api.brest.app/token/',{
           "login": this.model.login,
           "password": this.model.password
         }).then((resp)=>{
           if(resp.data.STATUS === "SUCCESS"){
-            this.$store.state.auth = resp.data.TOKEN;
+            this.$store.state.auth = "Bearer " + resp.data.TOKEN;
             this.$router.push({path: '/dashboard'});
           }
 
