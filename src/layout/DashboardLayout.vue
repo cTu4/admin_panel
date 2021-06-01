@@ -37,7 +37,7 @@
         />
         <sidebar-item
           :link="{
-            name: 'Users',
+            name: 'Staff',
             icon: 'fas fa-users text-primary',
             path: '#',
           }"
