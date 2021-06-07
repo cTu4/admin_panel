@@ -131,7 +131,8 @@ export default {
             }).then((resp)=>{
           console.log(resp);
           if(resp.data.STATUS === "SUCCESS"){
-            this.$store.state.auth = "Bearer " + resp.data.TOKEN;
+            this.$store.commit('logIn', "Bearer " + resp.data.TOKEN);
+            // this.$store.state.auth = "Bearer " + resp.data.TOKEN;
             this.$router.push({path: '/dashboard'});
           }
           else {
@@ -149,10 +150,6 @@ export default {
 
   },
   mounted(){
-
-
-
-
 
   //   axios.post("https://equilit.eu.auth0.com/oauth/token",{
   //     "client_id":"hj8Ml5qdojTwwvMORVIK0TGvR98uDnXe",

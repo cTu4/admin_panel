@@ -1,6 +1,6 @@
 <template>
   <div class="row">
-    <div v-for="(card,index) in cards" :key="index" class="col-xl-4 col-lg-6">
+    <div v-for="(card,index) in cards" :key="index" class="col-xl-4 col-lg-4">
       <stats-card
           :title="card.title"
           :type=card.color

@@ -70,4 +70,8 @@ export default {
   },
 };
 </script>
-<style></style>
+<style>
+  .footer{
+    padding: 2.5rem 0 1rem 0!important;
+  }
+</style>

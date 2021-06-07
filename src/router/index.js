@@ -4,22 +4,23 @@ import DashboardLayout from "@/layout/DashboardLayout";
 import AuthLayout from "@/layout/AuthLayout";
 
 import Dashboard from "../views/Dashboard.vue";
-import Tables from "../views/Tables.vue";
-import Icons from "../views/Icons.vue";
-import Maps from "../views/Maps.vue";
+// import Tables from "../views/Tables.vue";
+// import Icons from "../views/Icons.vue";
+// import Maps from "../views/Maps.vue";
 import Profile from "../views/UserProfile.vue";
 
 import Login from "../views/Login.vue";
 import Register from "../views/Register.vue";
-import Payments from "../views/payments.vue";
+import Users from "../views/Users";
+import Payments from "../views/Payments.vue";
 import Orders from "../views/Orders.vue";
+import Outlets from "../views/Outlets.vue";
+import Brands from "../views/Brands";
+import Departments from "../views/Departments";
+import Items from "../views/Items";
 
 // import Auth from "../views/Auth.vue";
-
-
-
 // import Auth from "../views/Auth.vue";
-
 
 const routes = [
   {
@@ -33,20 +34,30 @@ const routes = [
         components: { default: Dashboard },
       },
       {
-        path: "/tables",
-        name: "tables",
-        components: { default: Tables },
+        path: "/brands",
+        name: "brands",
+        components: { default: Brands },
       },
       {
-        path: "/icons",
-        name: "icons",
-        components: { default: Icons },
+        path: "/outlets",
+        name: "outlets",
+        components: { default: Outlets },
       },
       {
-        path: "/maps",
-        name: "maps",
-        components: { default: Maps },
+        path: "/departments",
+        name: "departments",
+        components: { default: Departments },
       },
+      {
+        path: "/items",
+        name: "menu items",
+        components: { default: Items },
+      },
+      // {
+      //   path: "/maps",
+      //   name: "maps",
+      //   components: { default: Maps },
+      // },
       {
         path: "/profile",
         name: "profile",
@@ -61,6 +72,11 @@ const routes = [
         path: "/orders",
         name: "orders",
         components: { default: Orders },
+      },
+      {
+        path: "/users",
+        name: "users",
+        components: { default: Users },
       },
     ],
   },
@@ -94,8 +110,6 @@ const routes = [
   //   ]
   // },
 ];
-
-
 
 const router = createRouter({
   history: createWebHashHistory(),

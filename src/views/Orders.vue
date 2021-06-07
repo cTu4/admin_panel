@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-header type="gradient-success" class="pb-6 pb-8 pt-5">
+    <base-header type="gradient-primary" class="pb-6 pb-8 pt-5">
       <cards :data="this.table.rows" :cardsData="cardsData" fieldSum="orderAmount">
 
       </cards>
@@ -71,7 +71,6 @@
           @do-search="doSearch"
           @is-finished="tableLoadingFinish"
           @return-checked-rows="updateCheckedRows"
-          title="Total payments"
       ></table-lite>
 
     </div>
@@ -97,28 +96,28 @@ export default {
       cards:{},
       cardsData:[
         {
-          Title: "Total orders",
-          icon: "ni ni-single-copy-04",
+          Title: "Total",
+          icon: "ni ni-cart",
           color: "gradient-blue",
           footerClass: "",
           mainHead: true,         // true = show total     false = show Sum
-          showFooter: true        // show / don't show sum in footer
+          showFooter: false       // show / don't show sum in footer
         },
         {
-          Title: "Payed orders",
-          icon: "ni ni-money-coins",
+          Title: "Payeds",
+          icon: "ni ni-cart",
           color: "gradient-green",
           footerClass: "text-success",
           mainHead: true,
-          showFooter: true
+          showFooter: false       // show / don't show sum in footer
         },
         {
-          Title: "Not payed orders",
-          icon: "ni ni-money-coins",
+          Title: "Not payed",
+          icon: "ni ni-cart",
           color: "gradient-red",
           footerClass: "text-danger",
           mainHead: true,
-          showFooter: true
+          showFooter: false       // show / don't show sum in footer
         }
       ],
       table:{
@@ -128,21 +127,21 @@ export default {
           {
             label: "Brand name",
             field: "brandName",
-            width: "5%",
+            width: "20%",
             sortable: true,
             isKey: true,
           },
           {
             label: "Outlet name",
             field: "outletName",
-            width: "5%",
+            width: "20%",
             sortable: true,
             isKey: true,
           },
           {
             label: "Amount",
             field: "orderAmount",
-            width: "5%",
+            width: "20%",
             sortable: true,
             display(row){
               return parseFloat(row.orderAmount).toFixed(2) + " " + row.orderCurrency;
@@ -151,7 +150,7 @@ export default {
           {
             label: "Date",
             field: "orderDate",
-            width: "5%",
+            width: "20%",
             sortable: true,
             display(row){
               return row.orderDate? moment(row.orderDate*1000).format('DD.MM.YYYY, hh:mm:ss') : "-";
@@ -160,7 +159,7 @@ export default {
           {
             label: "Status",
             field: "isPayed",
-            width: "5%",
+            width: "10%",
             sortable: true,
             display(row){
               return row.isPayed === "Y"? "<i class=\"fas fa-check\"></i>" : "<i class=\"fas fa-times\"></i>"
@@ -220,6 +219,7 @@ export default {
       });
     },
     updateCheckedRows(rowsKey){
+      console.log(rowsKey);
 
     }
   },
@@ -227,21 +227,20 @@ export default {
 
   },
   created(){
-    // if(!this.$store.state.auth){
-    //   this.$router.push(
-    //       {
-    //         name: 'login'
-    //       });
-    // }
-   let auth = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc3NvLmJyZXN0LmFwcFwvIiwic3ViIjoiQkI3OTYwODYtQkUwMS0xMUVCLTgxQ0ItNkVGOTFGRTZBODA1IiwiaWF0IjoxNjIyNTY5MDYyLCJleHAiOjE2MjI1ODM0NjJ9.6xJwCDySFRyZyssZUceCdvCJGw6DhJ8VWD7GUrEZuUM";
+    if(!this.$store.state.auth){
+      this.$router.push(
+          {
+            name: 'login'
+          });
+    }
+   // let auth = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJodHRwczpcL1wvc3NvLmJyZXN0LmFwcFwvIiwic3ViIjoiQkI3OTYwODYtQkUwMS0xMUVCLTgxQ0ItNkVGOTFGRTZBODA1IiwiaWF0IjoxNjIyNjU1NzYwLCJleHAiOjE2MjI2NzAxNjB9.ZZ3m7OdA4h_2M3GWWy8qyO1pBhGye0zlGsTUXUiscNo";
     axios.get('https://api.brest.app/order/',{
       headers:{
-        Authorization: auth
-        // Authorization: this.$store.state.auth
+        // Authorization: auth
+        Authorization: this.$store.state.auth
       }
     }).then((resp)=>{
       let data = resp.data;
-      console.log(data)
       if(data.STATUS === "SUCCESS"){
         let rows = [];
         // let total = 0,

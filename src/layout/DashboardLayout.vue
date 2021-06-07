@@ -13,33 +13,39 @@
             path: '/dashboard',
           }"
         />
-
         <sidebar-item
           :link="{
-            name: 'Companies',
-            icon: 'ni ni-bullet-list-67 text-primary',
-            path: '#',
+            name: 'Brands',
+            icon: 'ni ni-planet text-primary',
+            path: '/brands',
           }"
         />
         <sidebar-item
           :link="{
             name: 'Outlets',
             icon: 'ni ni-shop text-primary',
-            path: '#',
+            path: '/outlets',
+          }"
+        />
+        <sidebar-item
+            :link="{
+            name: 'Departments',
+            icon: 'ni ni-building text-primary',
+            path: '/departments',
           }"
         />
         <sidebar-item
           :link="{
-            name: 'Menu Items',
-            icon: 'ni ni-circle-08 text-primary',
-            path: '#',
-          }"
-        />
-        <sidebar-item
-          :link="{
-            name: 'Staff',
+            name: 'Users',
             icon: 'fas fa-users text-primary',
-            path: '#',
+            path: '/users',
+          }"
+        />
+        <sidebar-item
+            :link="{
+            name: 'Menu Items',
+            icon: 'ni ni-folder-17 text-primary',
+            path: '/items',
           }"
         />
 <!--        <sidebar-item-->
@@ -59,7 +65,7 @@
         <sidebar-item
             :link="{
             name: 'Orders',
-            icon: 'ni ni-single-copy-04 text-primary',
+            icon: 'ni ni-cart text-primary',
             path: '/orders',
           }"
         />
@@ -68,7 +74,7 @@
     <div class="main-content" :data="sidebarBackground">
       <dashboard-navbar></dashboard-navbar>
 
-      <div @click="toggleSidebar">
+      <div class="content" @click="toggleSidebar">
         <!-- your content here -->
         <router-view></router-view>
         <content-footer v-if="!$route.meta.hideFooter"></content-footer>
@@ -99,4 +105,11 @@ export default {
   },
 };
 </script>
-<style lang="scss"></style>
+<style lang="scss">
+  .content{
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+</style>

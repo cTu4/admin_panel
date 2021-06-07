@@ -150,7 +150,7 @@
                 <span>Support</span>
               </router-link>
               <div class="dropdown-divider"></div>
-              <router-link to="/profile" class="dropdown-item">
+              <router-link @click="logOut" to="/login" class="dropdown-item">
                 <i class="ni ni-user-run"></i>
                 <span>Logout</span>
               </router-link>
@@ -200,6 +200,10 @@ export default {
     showSidebar() {
       this.$sidebar.displaySidebar(true);
     },
+    logOut(){
+      console.log('aa');
+      this.$store.commit("logOut");
+    }
   },
   beforeUnmount() {
     if (this.$sidebar.showSidebar) {

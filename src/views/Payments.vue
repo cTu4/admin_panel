@@ -1,6 +1,6 @@
 <template>
   <div>
-    <base-header type="gradient-success" class="pb-6 pb-8 pt-5">
+    <base-header type="gradient-primary" class="pb-6 pb-8 pt-5">
 
       <div class="row">
         <div class="col-xl-4 col-lg-4">
@@ -22,7 +22,7 @@
         <div class="col-xl-4 col-lg-4">
           <stats-card
               title="Credit card"
-              type="gradient-green"
+              type="gradient-red"
               :sub-title="card + ' ' + currency"
               icon="ni ni-credit-card"
               class="mb-4 mb-xl-0 non-m"
@@ -38,7 +38,7 @@
         <div class="col-xl-4 col-lg-4">
           <stats-card
               title="Cash payments"
-              type="gradient-green"
+              type="gradient-red"
               :sub-title="cash + ' ' + currency"
               icon="ni ni-money-coins"
               class="mb-4 mb-xl-0 non-m"
@@ -67,7 +67,6 @@
           @do-search="doSearch"
           @is-finished="tableLoadingFinish"
           @return-checked-rows="updateCheckedRows"
-          title="Total payments"
       ></table-lite>
 
     </div>

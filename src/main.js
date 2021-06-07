@@ -22,6 +22,7 @@ import router from "./router";
 import ArgonDashboard from "./plugins/argon-dashboard";
 import "element-plus/lib/theme-chalk/index.css";
 import { createStore } from 'vuex'
+import createPersistedState from "vuex-persistedstate";
 
 // import useVuelidate from '@vuelidate/core'
 const store = createStore({
@@ -31,6 +32,15 @@ const store = createStore({
             payments: [
 
             ]
+        }
+    },
+    plugins: [createPersistedState()],
+    mutations:{
+        logIn(state,token){
+            state.auth = token;
+        },
+        logOut(state){
+            state.auth = null;
         }
     }
 });
